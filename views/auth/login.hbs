@@ -1,0 +1,15 @@
+ <h1>LOGIN TO OUR WEBSITE</h1>
+
+<form action="/auth/login" method="post">
+  <label for="username" class="">Username </label>
+  <input type="text" name="username" id="">
+  <label for="password" class="">Password </label>
+  <input type="text" name="password" id="">
+  <button type="submit">LOGIN</button>
+</form>
+
+<a href="/auth/google" class="button">Login with Google</a>
+
+{{#if message}}
+<div>{{message}}</div>
+{{/if}}
