@@ -36,7 +36,7 @@ router.get("/login", (req, res, next) => {
 });
 
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/recipe/index',
+  successRedirect: '/recipe/search',
   failureRedirect: '/auth/login',
   failureFlash: true
 }))
@@ -51,7 +51,7 @@ passport.authenticate('google', { scope: [
 
 router.get('/google/callback', 
 passport.authenticate('google', { 
-  successRedirect: '/recipe/index',
+  successRedirect: '/recipe/search',
   failureRedirect: '/auth/login'
   })
 );
