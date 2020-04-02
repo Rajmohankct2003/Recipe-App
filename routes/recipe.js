@@ -6,4 +6,8 @@ router.get('/index', (req, res, next) => {
   res.render('recipe/index');
 });
 
+router.get('/favourite', (req, res, next) => {
+  res.render('recipe/favourite');
+});
+
 module.exports = router;

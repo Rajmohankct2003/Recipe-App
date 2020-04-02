@@ -70,6 +70,9 @@ app.use('/', index);
 const authRouter = require('./routes/auth');
 app.use('/auth', authRouter);
 
+const profileRouter = require('./routes/profile');
+app.use('/profile', profileRouter);
+
 const recipeRouter = require('./routes/recipe');
 app.use('/recipe', recipeRouter);
 
