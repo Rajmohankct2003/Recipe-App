@@ -1,0 +1,22 @@
+This is the detail page
+  <div><h3>{{data.title}}</h3></div>
+  <div>Ready in Minutes: {{data.readyInMinutes}}</div>
+  <div>Servings: {{data.servings}}</div>
+  <img src="{{data.image}}" alt="Recipe-image">
+  <div><p id="para">{{data.summary}}</p></div>
+  <div><h4>Ingredients</h4></div>
+  <ul>
+    {{#each data.extendedIngredients}}
+      <li>{{name}}</li>
+    {{/each}}
+  </ul>
+
+    <div><h4>Instructions</h4></div>
+    {{#each data.analyzedInstructions}}
+      {{#each steps}}
+        <div>{{number}}. {{step}}</div>
+      {{/each}}
+    {{/each}}
+
+    <script src="/javascripts/script1.js"></script>
+
