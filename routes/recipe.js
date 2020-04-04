@@ -13,13 +13,19 @@ router.get('/favourite', (req, res, next) => {
 
 router.post('/search', (req, res, next) => {
   console.log('request body', req.body.ingredient )
-  axios.get(`https://api.spoonacular.com/recipes/findByIngredients?ingredients="${req.body.ingredient}"&number=5&limitLicense=false&ranking=1&ignorePantry=true&apiKey=690868cfaafc4e0bb88ddf1c2f06651a`)
-    .then( appres => {
-      console.log("Response from API:", appres.data)
-      res.render('recipe/list', {data: appres.data})
+  axios.get(`https://api.spoonacular.com/recipes/complexSearch?query="${req.body.ingredient}"&diet="Vegetarian"&instructionsRequired=true&apiKey=${process.env.SPOONACULAR_APIKEY}`)
+    .then( apires => {
+      console.log("Response from API:", apires.data);
+      res.render('recipe/list', {data: apires.data.results});
     })
 })
-
+router.get('/detail/:id', (req,res,next) => {
+  axios.get(`https://api.spoonacular.com/recipes/${req.params.id}/information?includeNutrition=false&apiKey=${process.env.SPOONACULAR_APIKEY}`)
+    .then( apires => {
+      console.log("Response from API:", apires.data);
+      res.render('recipe/detail',{data: apires.data});
+    })
+})
 
 
 module.exports = router;
