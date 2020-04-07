@@ -5,4 +5,31 @@ body {
 a {
   color: #00B7FF; }
 
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-start; }
+
+.header {
+  background-color: #D23131;
+  height: 50px;
+  text-align: center;
+  padding-top: 20px; }
+
+.navbar > li {
+  list-style: none;
+  margin-right: 10px; }
+
+a {
+  text-decoration: none;
+  color: white;
+  font-family: Reenie Beanie;
+  font-style: normal;
+  font-size: 25px;
+  line-height: 36px; }
+
+a:visited {
+  color: white; }
+
 /*# sourceMappingURL=style.css.map */
