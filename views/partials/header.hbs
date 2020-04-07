@@ -1,0 +1,12 @@
+<div class="header"> 
+    <nav class="navbar">
+        <li><a href="/" class="">Home</a></li>
+        <li><a href="/profile/show">Profile</li>
+        {{#if user}}
+            <li><a href="/auth/logout">Logout</a></li>
+        {{else}}                    
+            <li><a href="/auth/signup">Signup</a></li>
+            <li><a href="/auth/login">Login</a></li>
+        {{/if}}
+    </nav>
+</div>
