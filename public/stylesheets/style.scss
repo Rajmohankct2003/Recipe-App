@@ -2,7 +2,28 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
+.container {
+  background-color: lightgrey;
+  margin: 0px;
+  height: 100vh;
+}
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.profile > * {
+  margin: 15px;
+}
+label {
+  display: inline-block;
+  width: 140px;
+  text-align: right;
+}​
+input {
+  border: 1px solid black;
+}
 a {
   color: #00B7FF;
 }

@@ -1,12 +1,11 @@
-{{> header}}
- <h1>PROFILE PAGE</h1>
-
-<div>
-  <div>First Name :  {{user.firstname}} </div>
-  <div>Last Name : {{user.lastname}}</div>
-  <div><img src="{{user.picture}}" alt="Profile picture" class="profile-pic"></div>
-  <div>Age: {{user.age}}</div>
+<div class='container'>
+  {{> header}}
+  <div class="profile">
+    <div><img src="{{user.picture}}" alt="Profile picture" class="profile-pic"></div>
+    <div>{{user.firstname}} {{user.lastname}}</div>
+    <div>Age: {{user.age}}</div>
+    <a href="/profile/update">Update</a>
+    <a href="/recipe/search">Favourite Recipes</a>
+    <a href="/recipe/search">Back to Recipe</a>
+  </div>
 </div>
-
-<a href="/profile/update">Update</a>
-<a href="/recipe/search">Back to Recipe</a>
