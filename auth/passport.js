@@ -44,13 +44,13 @@ passport.use(
     callbackURL: "/auth/google/callback"
   },
   (accessToken, refreshToken, profile, callback) => {
-    User.findOne({ googleId: profile.id })
+    User.findOne({ googleID: profile.id })
       .then(user => {
         if(user) {
           return callback(null,user)
         }
         User.create({
-          GoogleID: profile.id,
+          googleID: profile.id,
           username: profile.emails[0].value
         })
         .then(newUser => {

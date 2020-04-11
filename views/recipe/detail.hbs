@@ -1,16 +1,41 @@
 {{> header}}
-This is the detail page
   <div><h3>{{data.title}}</h3></div>
   <div>Ready in Minutes: {{data.readyInMinutes}}</div>
   <div>Servings: {{data.servings}}</div>
   <img src="{{data.image}}" alt="Recipe-image">
   <div><p id="para">{{data.summary}}</p></div>
+
+  <div class="popup">
+    <div class="popup-content">
+      <img class="closeImg" src="/images/close-icon-vector-23190083.jpg">
+      <form>
+        <label for="recipeId">Recipe Id</label>
+        <input type="number" value={{data.id}} class="recipeId" readonly>
+        <label for="title">Title</label>
+        <input type="text" value={{data.title}} class="title" readonly>        
+        <label for="rating">Rating </label>
+        <select class="rating" name="rating">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <input type="text" name="comments" class="input comments">
+        <button type="button" id="reviewSubmit">Submit</button>
+      </form>
+    </div>
+  </div>
+
   <div><h4>Ingredients</h4></div>
   <ul>
     {{#each data.extendedIngredients}}
       <li>{{name}}</li>
     {{/each}}
   </ul>
+
+  {{#if user}}
+    <button id="writeReview">Write Review</button>
 
     <div><h4>Instructions</h4></div>
     {{#each data.analyzedInstructions}}
@@ -19,5 +44,21 @@ This is the detail page
       {{/each}}
     {{/each}}
 
+    {{#if reviews}}
+      <h4>Reviews </h4>
+        {{#each reviews}}
+          <div class="rating">{{rating}}</div>
+          {{!-- <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span> --}}
+          <div>{{username}}</div>
+          <div>{{comments}}</div>
+        {{/each}}
+    {{/if}}
+  {{/if}}
+
     <script src="/javascripts/script1.js"></script>
+    <script src="/javascripts/review.js"></script>
 

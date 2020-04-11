@@ -31,16 +31,11 @@ body {
 }
 
 label {
-  display: inline-block;
-  width: 140px;
-  text-align: right;
+  display: block;
+  text-align: center;
 }
 
 ​
-input {
-  border: 1px solid black;
-}
-
 a {
   color: #00B7FF;
 }
@@ -111,5 +106,51 @@ a {
   top: 763px;
   background: #D23131;
   border-radius: 45px;
+}
+
+.popup {
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.popup-content {
+  height: 50%;
+  width: 75%;
+  background: #FFF;
+  padding: 0px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.closeImg {
+  top: -20px;
+  right: -51%;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+}
+
+form > .input {
+  border: 1px solid grey;
+  margin: 20px auto;
+  display: block;
+  width: 50%;
+  padding: 8px;
+}
+
+.checked {
+  color: orange;
 }
 /*# sourceMappingURL=style.css.map */

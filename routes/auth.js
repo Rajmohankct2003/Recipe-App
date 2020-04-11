@@ -51,7 +51,7 @@ passport.authenticate('google', { scope: [
 
 router.get('/google/callback', 
 passport.authenticate('google', { 
-  successRedirect: '/recipe/search',
+  successRedirect: '/profile/update',
   failureRedirect: '/auth/login'
   })
 );

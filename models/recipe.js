@@ -3,8 +3,10 @@ const Schema   = mongoose.Schema;
 
 const recipeSchema = new Schema({
    recipeId: String,
+   userId: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+   username: String,
    rating: Number,
-   review: String
+   comments: String
 }, {
   timestamps: true
 });
