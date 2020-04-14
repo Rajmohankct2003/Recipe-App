@@ -1,12 +1,27 @@
-{{> header}}
-  <div><h3>{{data.title}}</h3></div>
-  <div>Ready in Minutes: {{data.readyInMinutes}}</div>
-  <div>Servings: {{data.servings}}</div>
-  <img src="{{data.image}}" alt="Recipe-image">
-  <div><p id="para">{{data.summary}}</p></div>
-
-
-  <hr>
+  {{> header}}
+  <div class="recipe-detail">
+    <div class="flex-row">
+      <h2>{{data.title}}</h2>
+      <div class="flex-column">
+        <div>Cooking time: {{data.readyInMinutes}}</div>
+      </div>
+    </div>
+    <hr>
+    <div class="flex-row">
+      <img class="img" src="{{data.image}}" alt="Recipe-image">
+      <div><p id="para">{{data.summary}}</p></div>
+    </div>
+    <hr>
+    <div class="flex-column">
+      <h4>ADD TO FAVOURITES</h4>
+        <div>
+            <label class="switch">
+              <input type="checkbox" class="addToFavourites">
+              <span class="slider round"></span>
+            </label>
+        </div>
+    </div>
+  </div>
   <div class="popup">
     <div class="popup-content">
       <img class="closeImg" src="/images/close-icon-vector-23190083.jpg">
@@ -30,59 +45,68 @@
       </form>
     </div>
   </div>
+  <div class="recipe-detail">
+      <div><h4 style="display:inline-block;">Servings: {{data.servings}}</h4></div>
+      <hr>
+      <div><h4>Ingredients</h4></div>
+      <ul>
+        {{#each data.extendedIngredients}}
+          <li>{{name}}</li>
+        {{/each}}
+      </ul>
+      <hr>
+      {{#if user}}
 
-  <div><h4>Ingredients</h4></div>
-  <ul>
-    {{#each data.extendedIngredients}}
-      <li>{{name}}</li>
-    {{/each}}
-  </ul>
-  <hr>
-  {{#if user}}
-
-    <div><h4>Instructions</h4></div>
-    {{#each data.analyzedInstructions}}
-      {{#each steps}}
-        <div>{{number}}. {{step}}</div>
-      {{/each}}
-    {{/each}}
-    <hr>
-    <button class="search-btn" id="writeReview">Write Review</button>
-
-    <div class="flex">
-      <p>Show Review </p>
-      <label class="switch">
-        <input type="checkbox" class="showReview">
-        <span class="slider round"></span>
-      </label>
-    </div>
-   
-    <div class="reviewContainer" >
-        <h4>Reviews </h4>
-        <div class="reviewList">
-          {{#each reviews}}
-           <div class="reviewItem">
-              <div class="rating">{{rating}}
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-              </div>
-              {{#if firstname}}
-              <div>{{firstname}}</div>
-              {{else}}
-              <div>Anonymous</div>
-              {{/if}}
-              <div>{{comments}}</div>
-              <hr>
-           </div>
-           
+        <div><h4>Preparations</h4></div>
+        {{#each data.analyzedInstructions}}
+          {{#each steps}}
+            <div>{{number}}. {{step}}</div>
           {{/each}}
+        {{/each}}
+      {{/if}}  
+      
+  </div>
+  <div class="recipe-detail">
+    {{#if user}}
+        <div style"text-align: center;">
+          <button class="search-btn" id="writeReview">LEAVE A REVIEW</button>
+        </div>  
+        <hr>
+        <div class="flex">
+          <p>Show Reviews </p>
+          <label class="switch">
+            <input type="checkbox" class="showReview">
+            <span class="slider round"></span>
+          </label>
         </div>
-    </div>
-  {{/if}}
-
-    <script src="/javascripts/script1.js"></script>
-    <script src="/javascripts/review.js"></script>
+      
+        <div class="reviewContainer" >
+            <h4>Reviews </h4>
+            <div class="reviewList">
+              {{#each reviews}}
+              <div class="reviewItem">
+                  <div class="rating">{{rating}}
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span>
+                  </div>
+                  {{#if firstname}}
+                  <div>{{firstname}}</div>
+                  {{else}}
+                  <div>Anonymous</div>
+                  {{/if}}
+                  <div>{{comments}}</div>
+                  <hr>
+              </div>
+              
+              {{/each}}
+            </div>
+        </div>
+      {{/if}}
+  </div>
+  
+  <script src="/javascripts/script1.js"></script>
+  <script src="/javascripts/review.js"></script>
 
