@@ -1,13 +1,27 @@
-{{> header}}
+{{>header}}
 <div class="background">
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
-
-<div class="grid-index">
-  <div class="box1">
-    <div class="login-btn" ><a href="/auth/login">Login</a></div>
-    <div><a href="/auth/signup">Signup</a></div>
-    <div class="login-btn"><a href="/auth/google">Login with Google</a></div>
+<h1>Whats In Your Fridge?</h1>
+<form class="search-form" action="/recipe/search" method="post">
+  <div class="diet">
+     <input type="radio" name="diet" value="vegetarian" ><span>Vegetarian</span>
+     <input type="radio" name="diet" value="vegan"><span>Vegan</span>
+     <input type="radio" name="diet" value="glutenFree"><span>Gluten Free</span>
   </div>
-</div>
+  
+  <div>
+    <textarea class="inputSearch" name = "ingredient" placeholder="Ingredient 1, ingredient 2, ingredient 3.."></textarea>
+  </div>  
+  <button class="search-btn" type="submit">SEARCH</button>
+</form>
+
+<div class="popup-login">
+  <div class="popup-login-content">
+    <a href="/auth/google" class="login-btn">Login with Google</a>
+    <form action="/auth/login" method="post">
+      <input type="text" name="username" placeholder="Username">
+      <input type="text" name="password" placeholder="Password">
+      <button class="login-btn" type="submit">LOGIN</button>
+    </form>
+    <a href="/recipe/search" class="guest">continue as guest</a>
+  </div>
 </div>

@@ -1,22 +1,15 @@
 {{> header}}
 <div class="background">
-  <a href="/recipe/favourite">Show my favourite recipes</a>
-  <h1>Whats In Your Fridge?</h1>
-
-<h3>
-  This is recipe index search page 
-</h3> 
-
-
-<form action="/recipe/search" method="post">
-  <div>
-     <input type="radio" name="diet" value="vegetarian" >Vegetarian
-     <input type="radio" name="diet" value="vegan">Vegan
-     <input type="radio" name="diet" value="Gluten Free">Gluten Free
+<h1>Whats In Your Fridge?</h1>
+<form class="search-form" action="/recipe/search" method="post">
+  <div class="diet">
+     <input type="radio" name="diet" value="vegetarian" ><span>Vegetarian</span>
+     <input type="radio" name="diet" value="vegan"><span>Vegan</span>
+     <input type="radio" name="diet" value="glutenFree"><span>Gluten Free</span>
   </div>
-  <label for="ingredient" class="">Your Ingredients </label>
+  
   <div>
-    <textarea rows = "3" cols = "60" class="input" name = "ingredient" placeholder="Enter your ingredients separated by comma"></textarea>
+    <textarea class="inputSearch" name = "ingredient" placeholder="Ingredient 1, ingredient 2, ingredient 3.."></textarea>
   </div>  
   <button class="search-btn" type="submit">SEARCH</button>
 </form>

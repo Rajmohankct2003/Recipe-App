@@ -14,7 +14,7 @@ router.get('/favourite', (req, res, next) => {
 
 router.post('/search', (req, res, next) => {
   console.log('request body', req.body.ingredient )
-  axios.get(`https://api.spoonacular.com/recipes/complexSearch?query="${req.body.ingredient}"&diet="Vegetarian"&instructionsRequired=true&apiKey=${process.env.SPOONACULAR_APIKEY}`)
+  axios.get(`https://api.spoonacular.com/recipes/complexSearch?query="${req.body.ingredient}"&diet="${req.body.diet}"&instructionsRequired=true&number=9&apiKey=${process.env.SPOONACULAR_APIKEY}`)
     .then( apires => {
       console.log("Response from API:", apires.data);
       res.render('recipe/list', {data: apires.data.results});
@@ -27,6 +27,7 @@ router.get('/detail/:id', (req,res,next) => {
 
       Recipe.find({ recipeId: req.params.id})
         .then( reviews => {
+          console.log("Reviews : ", reviews)
           res.render('recipe/detail',{data: apires.data, user: req.user, reviews});
         })
         .catch(e => next(e))
