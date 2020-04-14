@@ -3,14 +3,21 @@
   <a href="/recipe/favourite">Show my favourite recipes</a>
   <h1>Whats In Your Fridge?</h1>
 
-This is recipe index search page  
+<h3>
+  This is recipe index search page 
+</h3> 
 
-<form class="searchbar" action="/recipe/search" method="post">
-  <input type="radio" name="diet" value="vegetarian" >Vegetarian 
-  <input type="radio" name="diet" value="vegan">Vegan  
-  <input type="radio" name="diet" value="Gluten Free">Gluten Free  
-  <label for="ingredient" class="">Add Ingredient </label>
-  <input type="text" name="ingredient" id="">
+
+<form action="/recipe/search" method="post">
+  <div>
+     <input type="radio" name="diet" value="vegetarian" >Vegetarian
+     <input type="radio" name="diet" value="vegan">Vegan
+     <input type="radio" name="diet" value="Gluten Free">Gluten Free
+  </div>
+  <label for="ingredient" class="">Your Ingredients </label>
+  <div>
+    <textarea rows = "3" cols = "60" class="input" name = "ingredient" placeholder="Enter your ingredients separated by comma"></textarea>
+  </div>  
   <button class="search-btn" type="submit">SEARCH</button>
 </form>
-</div>
+
