@@ -1,9 +1,11 @@
 {{> header}}
-<a href="/recipe/favourite">Show my favourite recipes</a>
+<div class="background">
+  <a href="/recipe/favourite">Show my favourite recipes</a>
+  <h1>Whats In Your Fridge?</h1>
 
 This is recipe index search page  
 
-<form action="/recipe/search" method="post">
+<form class="searchbar" action="/recipe/search" method="post">
   <input type="radio" name="diet" value="vegetarian" >Vegetarian 
   <input type="radio" name="diet" value="vegan">Vegan  
   <input type="radio" name="diet" value="Gluten Free">Gluten Free  
@@ -11,3 +13,4 @@ This is recipe index search page
   <input type="text" name="ingredient" id="">
   <button class="search-btn" type="submit">SEARCH</button>
 </form>
+</div>

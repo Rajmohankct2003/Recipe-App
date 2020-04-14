@@ -3,6 +3,8 @@ const Schema   = mongoose.Schema;
 
 const recipeSchema = new Schema({
    recipeId: String,
+   title:String,
+   image: String,
    rating: Number,
    review: String
 }, {

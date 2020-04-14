@@ -1,8 +1,11 @@
 {{> header}}
 This is the list page
-
+<div class="grid">
 {{#each data}}
-<div>{{title}} </div>
-<img src="{{image}}" alt="">
-<a href="/recipe/detail/{{id}}">VIEW RECIPE</a>
+  <div class="box2">
+    <div><img class="img" src="{{image}}" alt=""></div>
+    <div>{{title}} </div>
+    <div class ="recipe-btn"><a href="/recipe/detail/{{id}}">VIEW RECIPE</a></div> 
+  </div> 
 {{/each}}
+</div> 
