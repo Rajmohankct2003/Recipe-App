@@ -5,6 +5,8 @@ const recipeSchema = new Schema({
    recipeId: String,
    userId: [{ type: Schema.Types.ObjectId, ref: 'User' }],
    firstname: String,
+   title:String,
+   image: String,
    rating: Number,
    comments: String
 }, {
