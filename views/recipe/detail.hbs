@@ -4,10 +4,11 @@
   <div>Servings: {{data.servings}}</div>
   <img src="{{data.image}}" alt="Recipe-image">
   <div><p id="para">{{data.summary}}</p></div>
-
+  <hr>
   <div class="popup">
     <div class="popup-content">
       <img class="closeImg" src="/images/close-icon-vector-23190083.jpg">
+      <h3>Your feedback please</h3>
       <form>
         <label for="recipeId">Recipe Id</label>
         <input type="number" value={{data.id}} class="recipeId" readonly>
@@ -21,8 +22,9 @@
           <option value="4">4</option>
           <option value="5">5</option>
         </select>
-        <input type="text" name="comments" class="input comments">
+        <textarea rows="3" cols="60" class="input comments" name="comments" placeholder="Enter your comments"></textarea>
         <button type="button" id="reviewSubmit">Submit</button>
+        <h3>Your review is valuable</h3>
       </form>
     </div>
   </div>
@@ -33,9 +35,8 @@
       <li>{{name}}</li>
     {{/each}}
   </ul>
-
+  <hr>
   {{#if user}}
-    <button id="writeReview">Write Review</button>
 
     <div><h4>Instructions</h4></div>
     {{#each data.analyzedInstructions}}
@@ -43,20 +44,41 @@
         <div>{{number}}. {{step}}</div>
       {{/each}}
     {{/each}}
+    <hr>
+    <button class="search-btn" id="writeReview">Write Review</button>
 
-    {{#if reviews}}
-      <h4>Reviews </h4>
-        {{#each reviews}}
-          <div class="rating">{{rating}}</div>
-          {{!-- <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star"></span>
-          <span class="fa fa-star"></span> --}}
-          <div>{{username}}</div>
-          <div>{{comments}}</div>
-        {{/each}}
-    {{/if}}
+    <div class="flex">
+      <p>Show Review </p>
+      <label class="switch">
+        <input type="checkbox" class="showReview">
+        <span class="slider round"></span>
+      </label>
+    </div>
+   
+    <div class="reviewContainer" >
+        <h4>Reviews </h4>
+        <div class="reviewList">
+          {{#each reviews}}
+           <div class="reviewItem">
+              <div class="rating">{{rating}}
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+              </div>
+              {{#if firstname}}
+              <div>{{firstname}}</div>
+              {{else}}
+              <div>Anonymous</div>
+              {{/if}}
+              <div>{{comments}}</div>
+              <hr>
+           </div>
+           
+          {{/each}}
+        </div>
+    </div>
   {{/if}}
 
     <script src="/javascripts/script1.js"></script>

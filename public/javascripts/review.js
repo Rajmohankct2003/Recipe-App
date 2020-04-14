@@ -2,6 +2,8 @@ let writeReview = document.getElementById("writeReview");
 let reviewSubmit = document.getElementById("reviewSubmit");
 let popup = document.querySelector('.popup');
 let closeEle = document.querySelector('.closeImg');
+let showReview = document.querySelector('.showReview');
+let reviewContainer = document.querySelector('.reviewContainer');
 
 closeEle.addEventListener('click', () => {
   popup.style.display = "none";
@@ -23,3 +25,14 @@ reviewSubmit.addEventListener('click', (e) => {
   })
   .catch(e => next(e))
 })
+
+showReview.addEventListener('click', (e) => {
+  if(showReview.checked){
+    reviewContainer.style.display = "flex"
+    let ratings = document.querySelectorAll('.rating');
+    
+  } else {
+    reviewContainer.style.display = "none"
+  }
+})
+

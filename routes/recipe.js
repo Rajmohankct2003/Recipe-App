@@ -45,7 +45,7 @@ router.post('/review', (req,res,next) => {
        Recipe.create({
          recipeId: req.body.recipeId,
          userId: req.user._id,
-         username: req.user.username,
+         firstname: req.user.firstname,
          rating: req.body.rating,
          comments: req.body.comments
        })
@@ -61,6 +61,7 @@ router.post('/review', (req,res,next) => {
         recipeId: req.body.recipeId,
         userId: req.user._id
        }, { $set: {
+            firstname: req.user.firstname,
             rating: req.body.rating,
             comments: req.body.comments
           }
