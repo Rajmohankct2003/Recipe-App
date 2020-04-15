@@ -4,7 +4,39 @@ let popup = document.querySelector('.popup');
 let closeEle = document.querySelector('.closeImg');
 let showReview = document.querySelector('.showReview');
 let reviewContainer = document.querySelector('.reviewContainer');
+let addToFavourites = document.querySelector('.addToFavourites')
+let recipeIden = document.querySelector('.recipeIden').innerHTML;
 
+const checkFavorites = () => {
+  axios.get(`/recipe/favourite/check/${recipeIden}`)
+  .then(res => {
+     console.log("Response from Backend :",res.data);
+     if(res.data) {
+       addToFavourites.checked = true;
+     } else {
+       addToFavourites.checked = false;
+     }
+  })
+  .catch(e => console.log(e))
+}
+checkFavorites();
+
+addToFavourites.addEventListener('click', () => {
+  console.log("recipeIden :",recipeIden)
+  if(addToFavourites.checked) {
+    axios.post('/recipe/favourite/add', {recipeIden})
+    .then(res => {
+       console.log("Response from Backend :",res);
+    })
+    .catch(e => next(e))
+  } else if(!addToFavourites.checked) {
+    axios.post('/recipe/favourite/remove', {recipeIden})
+    .then(res => {
+       console.log("Response from Backend :",res);
+    })
+    .catch(e => next(e))
+  }
+})
 closeEle.addEventListener('click', () => {
   popup.style.display = "none";
 })
