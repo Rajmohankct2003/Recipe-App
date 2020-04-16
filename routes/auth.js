@@ -26,18 +26,18 @@ const { username, password } = req.body
   })
   .then( user => {
       console.log( `${user.username} signedup`);
-      res.redirect('/auth/login');
+      res.redirect('/index');
   })
   .catch(e => console.log("e",e))
 })
 
 router.get("/login", (req, res, next) => {
-  res.render('auth/login', {message: req.flash('error')})
+  res.render('/index', {message: req.flash('error')})
 });
 
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/recipe/search',
-  failureRedirect: '/auth/login',
+  failureRedirect: '/index',
   failureFlash: true
 }))
 
@@ -52,14 +52,14 @@ passport.authenticate('google', { scope: [
 router.get('/google/callback', 
 passport.authenticate('google', { 
   successRedirect: '/profile/update',
-  failureRedirect: '/auth/login'
+  failureRedirect: '/index'
   })
 );
 
 
 router.get('/logout', (req, res, next) => {
 req.session.destroy(() =>{
-  res.redirect('/auth/login')
+  res.redirect('/index')
 })
 })
 
