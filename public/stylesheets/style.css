@@ -1,6 +1,6 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  margin: 0px 5%; }
+  margin: 0px; }
 
 .container {
   background-color: lightgrey;
@@ -257,7 +257,9 @@ input:checked + .slider:before {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: flex-start;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  margin-left: 5%;
+  margin-right: 5%; }
 
 .grid-index {
   display: grid;
@@ -274,18 +276,20 @@ input:checked + .slider:before {
   background-color: #FFFFFF; }
 
 .login-btn {
+  padding-top: 5px;
   width: 160px;
   height: 45px;
   color: white;
   background: #D23131;
   border: 1px solid #C4C4C4;
   box-sizing: border-box;
-  border-radius: 35px; }
+  border-radius: 35px;
+  text-align: center; }
 
 .recipe-btn {
   padding: 5px 10px;
-  color: white;
-  background: #D23131;
+  color: #D23131;
+  background: white;
   box-sizing: border-box;
   border-radius: 35px;
   text-align: center;
@@ -302,7 +306,9 @@ input:checked + .slider:before {
   flex-direction: column;
   align-items: center;
   height: auto;
-  overflow: auto; }
+  overflow: auto;
+  background-color: #D23131;
+  border-radius: 20px; }
 
 h1 {
   font-family: Reenie Beanie;
@@ -312,7 +318,9 @@ h1 {
   font-size: 4em; }
 
 .img {
-  height: 200px; }
+  height: 190px;
+  border: 1px white solid;
+  margin-top: 15px; }
 
 .flex-row {
   display: flex;
@@ -330,7 +338,9 @@ h1 {
 
 .recipe-detail {
   border: 1px solid red;
-  padding: 3%; }
+  padding: 3%;
+  margin-left: 10%;
+  margin-right: 10%; }
 
 .recipe-detail > * > h4, h2, p {
   color: red; }

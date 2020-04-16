@@ -1,8 +1,9 @@
 <div class="header"> 
     <nav class="navbar">
-        <li><a href="/" class="">Home</a></li>
-        <li><a href="/profile/show">Profile</li>
+        <li><a href="/recipe/search" class="">Home</a></li>
         {{#if user}}
+            <li><a href="/recipe/favourite/list">Favourites</li>
+            <li><a href="/profile/show">Profile</li>
             <li><a href="/auth/logout">Logout</a></li>
         {{else}}                    
             <li><a href="/auth/signup">Signup</a></li>

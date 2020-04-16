@@ -66,9 +66,33 @@ router.get('/favourite/check/:recipeId', (req, res, next) => {
   .catch(e => next(e))
 })
 
+router.get('/favourite/list', (req, res, next) => {
+   Favourites.findOne({userId: req.user._id}) 
+    .then(list => {
+      console.log("List : ", list.recipeId);
+      let listOfRecipes = [];
+      list.recipeId.map(recId => {
+        Recipe.findOne({recipeId: recId})
+         .then(recipe => {
+           listOfRecipes.push({ 
+             image: recipe.image, 
+             title: recipe.title, 
+             id: recipe.recipeId
+            })
+            // console.log("List of Recipes :", listOfRecipes);
+         })
+         .catch(e => next(e))
+      } )
+      console.log("List of Recipes2 :", listOfRecipes);
+      console.log("Length of :", listOfRecipes.length);
+      res.render('recipe/list', {data: listOfRecipes});
+    })
+    .catch(e => next(e))
+})
+
 router.post('/search', (req, res, next) => {
   console.log('request body', req.body.ingredient )
-  axios.get(`https://api.spoonacular.com/recipes/complexSearch?query="${req.body.ingredient}"&diet="${req.body.diet}"&instructionsRequired=true&number=9&apiKey=${process.env.SPOONACULAR_APIKEY}`)
+  axios.get(`https://api.spoonacular.com/recipes/complexSearch?query="${req.body.ingredient}"&diet="${req.body.diet}"&instructionsRequired=true&number=12&apiKey=${process.env.SPOONACULAR_APIKEY}`)
     .then( apires => {
       console.log("Response from API:", apires.data);
       res.render('recipe/list', {data: apires.data.results});

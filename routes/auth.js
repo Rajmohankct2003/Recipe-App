@@ -32,12 +32,12 @@ const { username, password } = req.body
 })
 
 router.get("/login", (req, res, next) => {
-  res.render('/index', {message: req.flash('error')})
+  res.render('index', {message: req.flash('error')})
 });
 
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/recipe/search',
-  failureRedirect: '/index',
+  failureRedirect: '/auth/login',
   failureFlash: true
 }))
 
@@ -52,14 +52,14 @@ passport.authenticate('google', { scope: [
 router.get('/google/callback', 
 passport.authenticate('google', { 
   successRedirect: '/profile/update',
-  failureRedirect: '/index'
+  failureRedirect: '/auth/login'
   })
 );
 
 
 router.get('/logout', (req, res, next) => {
 req.session.destroy(() =>{
-  res.redirect('/index')
+  res.redirect('/auth/login')
 })
 })
 
