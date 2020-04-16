@@ -1,6 +1,4 @@
-@charset "UTF-8";
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 .container {
@@ -18,12 +16,8 @@ body {
   margin: 15px; }
 
 label {
-  display: inline-block;
-  width: 140px;
-  text-align: right; }
-
-input {
-  border: 1px solid black; }
+  display: block;
+  text-align: center; }
 
 a {
   color: #00B7FF; }
@@ -37,8 +31,7 @@ a {
 .header {
   background-color: #D23131;
   height: 50px;
-  text-align: center;
-  padding-top: 20px; }
+  text-align: center; }
 
 .navbar > li {
   list-style: none;
@@ -60,6 +53,9 @@ a {
   background-repeat: no-repeat;
   background-size: cover;
   height: 800px; }
+
+.red-background {
+  background-color: #D23131; }
 
 .searchbar {
   position: sticky;
