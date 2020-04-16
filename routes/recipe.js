@@ -2,15 +2,69 @@ const express = require('express');
 const router  = express.Router();
 const axios   = require('axios');
 const Recipe  = require('../models/recipe' );
+const Favourites = require('../models/favourites');
 
 /* GET home page */
 router.get('/search', (req, res, next) => {
   res.render('recipe/search');
 });
 
-router.get('/favourite', (req, res, next) => {
-  res.render('recipe/favourite');
+router.post('/favourite/add', (req, res, next) => {
+  console.log("req.body.recipeIden :", req.body )
+  const recipeId = req.body.recipeIden;
+  Favourites.findOne({ userId: req.user._id })
+  .then( resp => {
+    if(resp) {
+      Favourites.updateOne({
+        userId: req.user._id
+      }, {
+        $push: {recipeId: recipeId}
+      })
+      .then(resp => console.log("Favourites updated"))
+      .catch(e => next(e))
+    } else {
+      Favourites.create({
+        userId: req.user._id,
+        recipeId: recipeId
+      })
+      .then(resp => console.log("Added to Favourite"))
+      .catch(e => next(e))
+    }
+  })
+  .catch(e => next(e))
+  res.send('Successfully added to Favourite');
 });
+
+router.post('/favourite/remove', (req, res, next) => {
+  const recipeId = req.body.recipeIden;
+  Favourites.findOne({ userId: req.user._id })
+  .then( resp => {
+    if(resp) {
+      Favourites.updateOne({
+        userId: req.user._id
+      }, {
+        $pull: {recipeId: recipeId}
+      })
+      .then(res => console.log("Favourites removed"))
+      .catch(e => next(e))
+    }
+  })
+  .catch(e => next(e))
+  res.send('Successfully removed from Favourite');
+});
+
+router.get('/favourite/check/:recipeId', (req, res, next) => {
+  const recipeId = req.params.recipeId;
+  Favourites.findOne({ userId: req.user._id, recipeId: recipeId })
+  .then(resp => {
+    if(resp) {
+      res.send("true");
+    } else {
+      res.send("false");
+    }
+  })
+  .catch(e => next(e))
+})
 
 router.post('/search', (req, res, next) => {
   console.log('request body', req.body.ingredient )
@@ -23,11 +77,23 @@ router.post('/search', (req, res, next) => {
 router.get('/detail/:id', (req,res,next) => {
   axios.get(`https://api.spoonacular.com/recipes/${req.params.id}/information?includeNutrition=false&apiKey=${process.env.SPOONACULAR_APIKEY}`)
     .then( apires => {
-      // console.log("Response from API:", apires.data);
+      console.log("Response from API:", apires.data);
 
       Recipe.find({ recipeId: req.params.id})
         .then( reviews => {
-          console.log("Reviews : ", reviews)
+
+          if(reviews.length === 0) {
+            Recipe.create({
+              recipeId: apires.data.id,
+              title: apires.data.title,
+              image: apires.data.image         
+            })
+            .then(rec => console.log("Recipe Created :", rec))
+            .catch(e => next(e))
+          } else {
+            console.log("Reviews : ", reviews.length)
+          }
+          
           res.render('recipe/detail',{data: apires.data, user: req.user, reviews});
         })
         .catch(e => next(e))
