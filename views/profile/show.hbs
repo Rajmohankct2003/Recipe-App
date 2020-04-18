@@ -1,11 +1,11 @@
-<div class='container'>
+<div class='container grey-background'>
   {{> header}}
   <div class="profile">
-    <div><img src="{{user.picture}}" alt="Profile picture" class="profile-pic"></div>
+    <div><img class="profile-img" src="{{user.picture}}" alt="Profile picture" class="profile-pic"></div>
     <div>{{user.firstname}} {{user.lastname}}</div>
     <div>Age: {{user.age}}</div>
-    <a class="search-btn" href="/profile/update">Update</a>
-    <a class="search-btn" href="/recipe/favourite/list">Favourite Recipes</a>
-    <a class="search-btn" href="/recipe/search">Search Recipe</a>
+    <a class="login-btn" href="/profile/update">Update</a>
+    <a class="login-btn" href="/recipe/favourite/list">Favourite Recipes</a>
+    <a class="login-btn" href="/recipe/search">Search Recipe</a>
   </div>
 </div>
