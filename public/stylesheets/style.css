@@ -252,19 +252,12 @@ input:checked + .slider:before {
   padding: 10px; }
 
 .grid {
-  margin-top: 10px;
+  margin: 5%;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: flex-start;
-  flex-wrap: wrap;
-  margin-left: 5%;
-  margin-right: 5%; }
-
-.grid-index {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: minmax(220px, auto); }
+  flex-wrap: wrap; }
 
 .box1 {
   display: grid;
@@ -299,7 +292,7 @@ input:checked + .slider:before {
 
 .box2 {
   border: #D23131 1px solid;
-  margin-bottom: 1em;
+  margin: 2em;
   width: 25%;
   display: flex;
   justify-content: center;
