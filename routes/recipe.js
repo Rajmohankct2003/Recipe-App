@@ -15,42 +15,43 @@ router.post('/favourite/add', (req, res, next) => {
   Favourites.findOne({ userId: req.user._id })
   .then( resp => {
     if(resp) {
-      Favourites.updateOne({
+      return Favourites.updateOne({
         userId: req.user._id
       }, {
         $push: {recipeId: recipeId}
-      })
-      .then(resp => console.log("Favourites updated"))
-      .catch(e => next(e))
+      })  
     } else {
-      Favourites.create({
+      return Favourites.create({
         userId: req.user._id,
         recipeId: recipeId
       })
-      .then(resp => console.log("Added to Favourite"))
-      .catch(e => next(e))
     }
   })
+  .then(resp => {
+    console.log("Favourites added/updated")
+    res.send('Successfully added to Favourite');
+  })
   .catch(e => next(e))
-  res.send('Successfully added to Favourite');
 });
 
 router.post('/favourite/remove', (req, res, next) => {
   const recipeId = req.body.recipeIden;
   Favourites.findOne({ userId: req.user._id })
   .then( resp => {
-    if(resp) {
-      Favourites.updateOne({
-        userId: req.user._id
-      }, {
-        $pull: {recipeId: recipeId}
-      })
-      .then(res => console.log("Favourites removed"))
-      .catch(e => next(e))
+    if(!resp) {
+      throw('Favourites not found');
     }
+    return Favourites.updateOne({
+      userId: req.user._id
+    }, {
+      $pull: {recipeId: recipeId}
+    })
+  })
+  .then(res => {
+    console.log("Favourites removed");
+    res.send('Successfully removed from Favourite');
   })
   .catch(e => next(e))
-  res.send('Successfully removed from Favourite');
 });
 
 router.get('/favourite/check/:recipeId', (req, res, next) => {
@@ -69,14 +70,13 @@ router.get('/favourite/check/:recipeId', (req, res, next) => {
 router.get('/favourite/list', (req, res, next) => {
    Favourites.findOne({userId: req.user._id}) 
     .then(favourite => {
-      Recipe.find({
+      return Recipe.find({
         recipeId: { $in: favourite.recipeId }, 
         title: {$exists: true, $ne: null } 
       })
-      .then(listOfRecipes => {
+    })
+    .then(listOfRecipes => {
         res.render('recipe/list', {data: listOfRecipes, user:req.user});
-      })
-      .catch(e => next(e))
     })
     .catch(e => next(e))
 })
@@ -116,29 +116,21 @@ router.get('/detail/:id', (req,res,next) => {
 })
 
 router.post('/review', (req,res,next) => {
-  console.log("Request Body : ", req.body);
-  console.log("Request User : ", req.user);
+  // console.log("Request Body : ", req.body);
+  // console.log("Request User : ", req.user);
   Recipe.findOne({recipeId: req.body.recipeId, userId: req.user._id})
    .then(resp => {
      console.log("response", resp)
      if(!resp) {
-       console.log("recipe not found");
-       Recipe.create({
+       return Recipe.create({
          recipeId: req.body.recipeId,
          userId: req.user._id,
          firstname: req.user.firstname,
          rating: req.body.rating,
          comments: req.body.comments
        })
-       .then(resp1 => 
-        console.log("successfully created : ", resp1))
-       .catch(e => {
-        console.log("Error in creation: ", e) 
-        next(e)
-      })
      } else {
-      console.log("recipe found");
-       Recipe.updateOne({
+       return Recipe.updateOne({
         recipeId: req.body.recipeId,
         userId: req.user._id
        }, { $set: {
@@ -147,13 +139,14 @@ router.post('/review', (req,res,next) => {
             comments: req.body.comments
           }
        })
-       .then(e => next(e))
      }
-   
+    })
+    .then(resp => {
+      console.log("Recipe created/updated")
+      res.send("succesfull")
     })
     .catch(e => next(e))    
-    res.send("succesfull")
+    
 })
-
 
 module.exports = router;
