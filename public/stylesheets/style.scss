@@ -188,6 +188,11 @@ a {
   position: relative;
 }
 
+.popup-login-content a {
+  padding-top: 10px;
+  text-decoration: none;
+}
+
   .popup {
     background-color: rgba(0,0,0,0.1);
     width: 100%;
@@ -242,17 +247,19 @@ a {
     color: #d1cebd;
     padding-left: 5%;
   }
-  form > input {
-    margin: 5px auto 15px auto;
-    border-radius: 50px;
-    height: 25px;
-  }
-
   form > * {
     margin: 5px 10px 10px 10px;
     width: 65%;
     text-align: center;
   }
+
+  form > input {
+    margin: 5px 0px 15px 0px;
+    border-radius: 50px;
+    height: 25px;
+    width: 95%;
+  }
+
   .checked {
     color: orange;
   }
@@ -376,6 +383,7 @@ a {
     box-sizing: border-box;
     border-radius: 35px;
     text-align: center;
+    cursor: pointer;
   }
 
   .recipe-btn {

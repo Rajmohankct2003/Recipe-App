@@ -1,16 +1,19 @@
 {{> header}}
-<div class="background">
- <h1>LOGIN TO OUR WEBSITE</h1>
 
-<form action="/auth/signup" method="post">
-  <label for="username" class="">Username </label>
-  <input type="text" name="username" id="">
-  <label for="password" class="">Password </label>
-  <input type="text" name="password" id="">
-  <button type="submit">SAVE</button>
-</form>
 
-{{#if message}}
-<div>{{message}}</div>
-{{/if}}
+<div class="popup-login">
+  <div class="popup-login-content">
+    <form action="/auth/signup" method="post">
+      <div><h2>SIGNUP</h2></div>
+      <label for="username" class="">Username </label>
+      <input type="text" name="username" id="">
+      <label for="password" class="">Password </label>
+      <input type="text" name="password" id="">
+      <button class="login-btn" type="submit">SAVE</button>
+    </form>
+    {{#if message}}
+      <div>{{message}}</div>
+    {{/if}}
+  </div>
+</div>
 </div>

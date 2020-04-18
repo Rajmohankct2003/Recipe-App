@@ -1,13 +1,12 @@
 {{>header}}
 <div class="background">
 <h1>Whats In Your Fridge?</h1>
-<form class="search-form" action="/recipe/search" method="post">
+<form class="search-form" action="/recipe/search">
   <div class="diet">
      <input type="radio" name="diet" value="vegetarian" ><span>Vegetarian</span>
      <input type="radio" name="diet" value="vegan"><span>Vegan</span>
      <input type="radio" name="diet" value="glutenFree"><span>Gluten Free</span>
   </div>
-  
   <div>
     <textarea class="inputSearch" name = "ingredient" placeholder="Ingredient 1, ingredient 2, ingredient 3.."></textarea>
   </div>  
