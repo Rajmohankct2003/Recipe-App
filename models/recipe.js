@@ -8,6 +8,7 @@ const recipeSchema = new Schema({
    title:String,
    image: String,
    rating: Number,
+   stars: Array,
    comments: String
 }, {
   timestamps: true

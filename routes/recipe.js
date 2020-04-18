@@ -47,7 +47,7 @@ router.post('/favourite/remove', (req, res, next) => {
       $pull: {recipeId: recipeId}
     })
   })
-  .then(res => {
+  .then(resp => {
     console.log("Favourites removed");
     res.send('Successfully removed from Favourite');
   })
@@ -100,7 +100,7 @@ router.get('/detail/:id', (req,res,next) => {
          Recipe.find({ recipeId: req.params.id })
         .then( reviews => {
           console.log("Reviews : ", reviews)
-          if(!reviews) {
+          if(reviews.length === 0) {
             Recipe.create({
               recipeId: apires.data.id,
               title: apires.data.title,
@@ -109,31 +109,12 @@ router.get('/detail/:id', (req,res,next) => {
             .then(rec => console.log("Recipe Created :", rec))
             .catch(e => next(e))
           } else {
-                console.log("Reviews.length : ", reviews.length)
-                
-                // reviews.map(review => { 
-                //   console.log("Review.rating : ", review.rating);
-                //     switch (review.rating) {
-                //       case '5':
-                //         review.stars = [ true, true, true, true, true];
-                //         break;
-                
-                //       case '4':
-                //         review.stars = [ true, true, true, false, false];
-                //         break;
-                //       case '3':
-                //         review.stars = [ true, true, false, false, false];
-                //         break;
-                //       case '2':
-                //         review.stars = [ true, false, false, false, false];
-                //         break;
-                //       case '1':
-                //         review.stars = [ false, false, false, false, false];
-                //         break;
-                //     }  
-                //     console.log("Review.stars : ", review.stars);
-                // })
+                console.log("Reviews.length : ", reviews.length)                
+                reviews.map(review => { 
+                    console.log("Review.stars : ", review.stars);
+                })
           }
+          console.log("Review.stars 2 : ", reviews);
           res.render('recipe/detail',{data: apires.data, user: req.user, reviews});
         })
     })
@@ -144,15 +125,38 @@ router.get('/detail/:id', (req,res,next) => {
 router.post('/review', (req,res,next) => {
   // console.log("Request Body : ", req.body);
   // console.log("Request User : ", req.user);
+  let stars =[];
+  switch (req.body.rating) {
+    case 5:
+    case '5':
+      stars = [ true, true, true, true, true];
+      break;
+    case 4:
+    case '4':
+      stars = [ true, true, true, true, false];
+      break;
+    case 3:
+    case '3':
+      stars = [ true, true, true, false, false];
+      break;
+    case 2:
+    case '2':
+      stars = [ true, true, false, false, false];
+      break;
+    case 1:
+    case '1':
+      stars = [ true, false, false, false, false];
+      break;
+  } 
   Recipe.findOne({recipeId: req.body.recipeId, userId: req.user._id})
    .then(resp => {
-     console.log("response", resp)
      if(!resp) {
        return Recipe.create({
          recipeId: req.body.recipeId,
          userId: req.user._id,
          firstname: req.user.firstname,
          rating: req.body.rating,
+         stars: stars,
          comments: req.body.comments
        })
      } else {
@@ -162,6 +166,7 @@ router.post('/review', (req,res,next) => {
        }, { $set: {
             firstname: req.user.firstname,
             rating: req.body.rating,
+            stars: stars,
             comments: req.body.comments
           }
        })

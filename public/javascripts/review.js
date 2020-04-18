@@ -54,8 +54,9 @@ reviewSubmit.addEventListener('click', (e) => {
   axios.post('/recipe/review', { rating, comments, recipeId})
   .then(res => {
     popup.style.display = "none";
+    window.location.reload(false); 
   })
-  .catch(e => next(e))
+  .catch(e => next(e));
 })
 
 showReview.addEventListener('click', (e) => {

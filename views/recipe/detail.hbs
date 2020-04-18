@@ -88,17 +88,41 @@
             <h4>Reviews </h4>
             <div class="reviewList">
               {{#each reviews}}
-                  {{#if firstname}}
+                  {{#if userId}}
                       <div class="reviewItem">
                           <div class="rating">
                               <div class="rating-number" style="display:none">{{rating}}</div>
-                              <span class="fa fa-star"></span>
-                              <span class="fa fa-star"></span>
-                              <span class="fa fa-star"></span>
-                              <span class="fa fa-star"></span>
-                              <span class="fa fa-star"></span>
+                              {{#if stars.[0]}}
+                                <span class="fa fa-star checked"></span>
+                              {{else}}
+                                <span class="fa fa-star"></span>
+                              {{/if}}
+                              {{#if stars.[1]}}
+                                <span class="fa fa-star checked"></span>
+                              {{else}}
+                                <span class="fa fa-star"></span>
+                              {{/if}}
+                              {{#if stars.[2]}}
+                                <span class="fa fa-star checked"></span>
+                              {{else}}
+                                <span class="fa fa-star"></span>
+                              {{/if}}
+                              {{#if stars.[3]}}
+                                <span class="fa fa-star checked"></span>
+                              {{else}}
+                                <span class="fa fa-star"></span>
+                              {{/if}}
+                              {{#if stars.[4]}}
+                                <span class="fa fa-star checked"></span>
+                              {{else}}
+                                <span class="fa fa-star"></span>
+                              {{/if}}
                           </div>
+                          {{#if firstname}}
                           <div>{{firstname}}</div>
+                          {{else}}
+                          <div>Anonymous</div>
+                          {{/if}}
                           <div>{{comments}}</div>
                           <hr>
                       </div>
