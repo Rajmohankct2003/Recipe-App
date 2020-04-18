@@ -26,7 +26,7 @@ const { username, password } = req.body
   })
   .then( user => {
       console.log( `${user.username} signedup`);
-      res.redirect('/index');
+      res.redirect('/auth/login');
   })
   .catch(e => console.log("e",e))
 })
