@@ -76,7 +76,11 @@ router.get('/favourite/list', (req, res, next) => {
       })
     })
     .then(listOfRecipes => {
-        res.render('recipe/list', {data: listOfRecipes, user:req.user});
+        console.log("list of recipes :",listOfRecipes);
+        res.render('recipe/favourites', { 
+          data: listOfRecipes, 
+          user:req.user
+        });
     })
     .catch(e => next(e))
 })
