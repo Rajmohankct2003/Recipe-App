@@ -117,6 +117,7 @@ router.get('/detail/:id', (req,res,next) => {
                 //       case '5':
                 //         review.stars = [ true, true, true, true, true];
                 //         break;
+                
                 //       case '4':
                 //         review.stars = [ true, true, true, false, false];
                 //         break;
@@ -133,8 +134,8 @@ router.get('/detail/:id', (req,res,next) => {
                 //     console.log("Review.stars : ", review.stars);
                 // })
           }
+          res.render('recipe/detail',{data: apires.data, user: req.user, reviews});
         })
-      res.render('recipe/detail',{data: apires.data, user: req.user, reviews});
     })
     .catch(e => next(e))
   .catch(e => next(e))
