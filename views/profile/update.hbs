@@ -1,26 +1,28 @@
 {{> header}}
-<div class="container">
-  <div >
-    <form action="/profile/update" class="profile" method="post">
-        <div>
-            <label for="firstname" class="">First Name </label>
-            <input type="text" name="firstname" value="{{user.firstname}}" id="">
-        </div>
-        <div>
-            <label for="lastname"  class="">Last Name  </label>
-            <input type="text" name="lastname" value ="{{user.lastname}}"id="">  
-        </div>
-        <div>
-            <label for="picture"   class="">Picture Url </label>
-            <input type="text" name="picture" value ="{{user.picture}}" id="">     
-        </div>
-        <div>
-            <label for="age"       class="">Age     </label>
-            <input type="text" name="age"     value ="{{user.age}}" id="">      
-        </div>
-        <div>
-            <button type="submit">SAVE</button>
-        </div>
-   </form>
-  </div>
+<div class="popup-profile-upd">
+  <div class="popup-profile-upd-content">
+        {{!-- <div class="container"> --}}
+            <div >
+                <form action="/profile/update" class="profile" method="post">
+                    <div>
+                        <label for="firstname" class="">First Name </label>
+                        <input type="text" name="firstname" value="{{user.firstname}}" id="">
+                    </div>
+                    <div>
+                        <label for="lastname"  class="">Last Name  </label>
+                        <input type="text" name="lastname" value ="{{user.lastname}}"id="">  
+                    </div>
+                    <div>
+                        <label for="picture"   class="">Picture Url </label>
+                        <input type="text" name="picture" value ="{{user.picture}}" id="">     
+                    </div>
+                    <div>
+                        <label for="age"       class="">Age     </label>
+                        <input type="text" name="age"     value ="{{user.age}}" id="">      
+                    </div>
+                    <button class="search-btn" type="submit">SAVE</button>
+                </form>
+            </div>
+        {{!-- </div> --}}
+    </div>
 </div>

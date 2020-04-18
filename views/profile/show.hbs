@@ -1,11 +1,14 @@
-<div class='container'>
   {{> header}}
-  <div class="profile">
-    <div><img src="{{user.picture}}" alt="Profile picture" class="profile-pic"></div>
-    <div>{{user.firstname}} {{user.lastname}}</div>
-    <div>Age: {{user.age}}</div>
-    <a class="search-btn" href="/profile/update">Update</a>
-    <a class="search-btn" href="/recipe/favourite/list">Favourite Recipes</a>
-    <a class="search-btn" href="/recipe/search">Search Recipe</a>
+  <div class="popup-profile">
+    <div class="popup-profile-content">
+      <div class="profile">
+        <div><img src="{{user.picture}}" alt="Profile picture" class="profile-pic"></div>
+        <div>First Name: {{user.firstname}}</div>
+        <div>Last Name: {{user.lastname}}</div>
+        <div>Age: {{user.age}}</div>
+        <a class="search-btn" href="/profile/update">Update</a>
+        <a class="search-btn" href="/recipe/favourite/list">Favourite Recipes</a>
+        <a class="search-btn" href="/recipe/search">Search Recipe</a>
+      </div>
+    </div>
   </div>
-</div>
