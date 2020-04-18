@@ -8,7 +8,7 @@
     </div>
     <hr>
     <div class="flex-row">
-      <img class="img" src="{{data.image}}" alt="Recipe-image">
+      <img class="img-detail" src="{{data.image}}" alt="Recipe-image">
       <div><p id="para">{{data.summary}}</p></div>
     </div>
     <hr>
@@ -62,7 +62,7 @@
         <div><h4>Preparations</h4></div>
         {{#each data.analyzedInstructions}}
           {{#each steps}}
-            <div>{{number}}. {{step}}</div>
+            <div class="grey-font">{{number}}. {{step}}</div>
           {{/each}}
         {{/each}}
         {{else}}
