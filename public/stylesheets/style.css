@@ -30,7 +30,7 @@ a {
   align-items: flex-start; }
 
 .header {
-  background-color: #D23131;
+  background-color: #d63447;
   height: 50px;
   text-align: center; }
 
@@ -71,8 +71,8 @@ a {
   border-radius: 50px; }
 
 .diet > span {
-  font-size: large;
-  color: black;
+  font-size: medium;
+  color: #d1cebd;
   font-weight: bold; }
 
 .searchbar {
@@ -89,7 +89,7 @@ a {
 .search-btn {
   width: 200px;
   height: 50px;
-  background: #D23131;
+  background: #f57b51;
   border-radius: 50px;
   cursor: pointer;
   margin: 10px;
@@ -260,6 +260,8 @@ input:checked + .slider:before {
   flex-wrap: wrap;
   margin-left: 5%;
   margin-right: 5%; }
+  .grid .grid > div {
+    background-color: #D23131; }
 
 .grid-index {
   display: grid;
@@ -288,7 +290,7 @@ input:checked + .slider:before {
 
 .recipe-btn {
   padding: 5px 10px;
-  color: #D23131;
+  color: #f57b51;
   background: white;
   box-sizing: border-box;
   border-radius: 35px;
@@ -307,12 +309,12 @@ input:checked + .slider:before {
   align-items: center;
   height: auto;
   overflow: auto;
-  background-color: #D23131;
+  background-color: #d63447;
   border-radius: 20px; }
 
 h1 {
   font-family: Reenie Beanie;
-  color: #D23131;
+  color: #d63447;
   margin: 0px;
   padding: 5% 30%;
   font-size: 4em; }
@@ -337,12 +339,24 @@ h1 {
   font-size: small; }
 
 .recipe-detail {
-  border: 1px solid red;
   padding: 3%;
   margin-left: 10%;
-  margin-right: 10%; }
+  margin-right: 10%;
+  background: #f6eedf; }
+
+.recipe-detail2 {
+  padding: 3%;
+  margin-left: 10%;
+  margin-right: 10%;
+  background: #f57b51; }
 
 .recipe-detail > * > h4, h2, p {
-  color: red; }
+  color: #d63447; }
+
+.recipe-detail2 > * > h4, h2 {
+  color: #f6eedf; }
+
+ul {
+  color: #d1cebd; }
 
 /*# sourceMappingURL=style.css.map */
