@@ -42,7 +42,7 @@
           <option value="5">5</option>
         </select>
         <textarea rows="3" cols="60" class="input comments" name="comments" placeholder="Enter your comments"></textarea>
-        <button type="button" id="reviewSubmit">Submit</button>
+        <button class="login-btn" type="button" id="reviewSubmit">Submit</button>
         <h3>Your review is valuable</h3>
       </form>
     </div>
@@ -88,23 +88,21 @@
             <h4>Reviews </h4>
             <div class="reviewList">
               {{#each reviews}}
-              <div class="reviewItem">
-                  <div class="rating">{{rating}}
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star"></span>
-                      <span class="fa fa-star"></span>
-                  </div>
                   {{#if firstname}}
-                  <div>{{firstname}}</div>
-                  {{else}}
-                  <div>Anonymous</div>
-                  {{/if}}
-                  <div>{{comments}}</div>
-                  <hr>
-              </div>
-              
+                      <div class="reviewItem">
+                          <div class="rating">
+                              <div class="rating-number" style="display:none">{{rating}}</div>
+                              <span class="fa fa-star"></span>
+                              <span class="fa fa-star"></span>
+                              <span class="fa fa-star"></span>
+                              <span class="fa fa-star"></span>
+                              <span class="fa fa-star"></span>
+                          </div>
+                          <div>{{firstname}}</div>
+                          <div>{{comments}}</div>
+                          <hr>
+                      </div>
+                  {{/if}}              
               {{/each}}
             </div>
         </div>

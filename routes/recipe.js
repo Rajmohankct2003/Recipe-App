@@ -96,12 +96,11 @@ router.post('/search', (req, res, next) => {
 router.get('/detail/:id', (req,res,next) => {
   axios.get(`https://api.spoonacular.com/recipes/${req.params.id}/information?includeNutrition=false&apiKey=${process.env.SPOONACULAR_APIKEY}`)
     .then( apires => {
-      console.log("Response from API:", apires.data);
-
-      Recipe.find({ recipeId: req.params.id})
+      // console.log("Response from API:", apires.data);
+         Recipe.find({ recipeId: req.params.id })
         .then( reviews => {
-
-          if(reviews.length === 0) {
+          console.log("Reviews : ", reviews)
+          if(!reviews) {
             Recipe.create({
               recipeId: apires.data.id,
               title: apires.data.title,
@@ -110,13 +109,35 @@ router.get('/detail/:id', (req,res,next) => {
             .then(rec => console.log("Recipe Created :", rec))
             .catch(e => next(e))
           } else {
-            console.log("Reviews : ", reviews.length)
+                console.log("Reviews.length : ", reviews.length)
+                
+                // reviews.map(review => { 
+                //   console.log("Review.rating : ", review.rating);
+                //     switch (review.rating) {
+                //       case '5':
+                //         review.stars = [ true, true, true, true, true];
+                //         break;
+                //       case '4':
+                //         review.stars = [ true, true, true, false, false];
+                //         break;
+                //       case '3':
+                //         review.stars = [ true, true, false, false, false];
+                //         break;
+                //       case '2':
+                //         review.stars = [ true, false, false, false, false];
+                //         break;
+                //       case '1':
+                //         review.stars = [ false, false, false, false, false];
+                //         break;
+                //     }  
+                //     console.log("Review.stars : ", review.stars);
+                // })
           }
-          res.render('recipe/detail',{data: apires.data, user: req.user, reviews});
         })
-        .catch(e => next(e))
+      res.render('recipe/detail',{data: apires.data, user: req.user, reviews});
     })
     .catch(e => next(e))
+  .catch(e => next(e))
 })
 
 router.post('/review', (req,res,next) => {

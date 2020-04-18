@@ -60,11 +60,17 @@ reviewSubmit.addEventListener('click', (e) => {
 
 showReview.addEventListener('click', (e) => {
   if(showReview.checked){
-    reviewContainer.style.display = "flex"
-    let ratings = document.querySelectorAll('.rating');
-    
+    reviewContainer.style.display = "flex";
+    // let ratings = document.querySelectorAll('.rating');
+    // console.log("ratings: ", ratings);
+    // for(let i=1; i <= ratings.length; i++ ) {
+    //   console.log("ratings[i].children[0].div.rating-number : ", ratings[i].children[0].div.rating-number)
+    //   for(let j=1; j <= ratings[i].children[0].div.rating-number; j++) {
+    //       ratings[i].children[j].span.style.classList('checked');
+    //   }
+    // }
   } else {
-    reviewContainer.style.display = "none"
+    reviewContainer.style.display = "none";
   }
 })
 

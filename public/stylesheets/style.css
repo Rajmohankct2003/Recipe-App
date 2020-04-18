@@ -57,7 +57,8 @@ a {
   background-image: url("/images/tomatoes-320860_1280.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 700px; }
+  height: 700px;
+  text-align: center; }
 
 .grey-background {
   background-color: #f6eedf; }
@@ -68,13 +69,14 @@ a {
 
 .diet {
   background-color: #f57b51;
+  height: auto;
   width: 25%;
   border-radius: 50px; }
 
 .diet > span {
   font-size: medium;
   color: #f6eedf;
-  font-weight: bold; }
+  font-weight: normal; }
 
 .searchbar {
   width: 850px;
@@ -229,7 +231,7 @@ form > input {
   height: 25px; }
 
 form > * {
-  margin: 5px 15px 15px 15px;
+  margin: 5px 10px 10px 10px;
   width: 65%;
   text-align: center; }
 
@@ -304,8 +306,9 @@ input:checked + .slider:before {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  border-bottom: 1px solid black;
-  padding: 10px; }
+  border: 1px solid #d63447;
+  padding: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }
 
 .grid {
   display: flex;
@@ -371,7 +374,7 @@ h1 {
   font-family: Reenie Beanie;
   color: #d63447;
   margin: 0px;
-  padding: 5% 30%;
+  padding: 5%;
   font-size: 4em;
   text-shadow: 2px 2px rgba(0, 0, 0, 0.25); }
 
@@ -421,7 +424,7 @@ h1 {
   margin-right: 10%;
   background: #f57b51; }
 
-.recipe-detail > * > h4, h2, p {
+.recipe-detail > * > h4, h3, h2, p {
   color: #d63447; }
 
 .recipe-detail2 > * > h4 {
