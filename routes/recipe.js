@@ -56,6 +56,7 @@ router.post('/favourite/remove', (req, res, next) => {
 
 router.get('/favourite/check/:recipeId', (req, res, next) => {
   const recipeId = req.params.recipeId;
+  
   Favourites.findOne({ userId: req.user._id, recipeId: recipeId })
   .then(resp => {
     if(resp) {
@@ -70,6 +71,9 @@ router.get('/favourite/check/:recipeId', (req, res, next) => {
 router.get('/favourite/list', (req, res, next) => {
    Favourites.findOne({userId: req.user._id}) 
     .then(favourite => {
+      if(!favourite){
+        return null
+      }
       return Recipe.find({
         recipeId: { $in: favourite.recipeId }, 
         title: {$exists: true, $ne: null } 
